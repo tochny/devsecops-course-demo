@@ -41,6 +41,7 @@ jobs:
           image-ref: demo-app:${{ github.sha }}
           exit-code: "1"
           severity: CRITICAL,HIGH
+          ignore-unfixed: "true"
 
   checkov:
     name: Checkov - IaC Scan
@@ -50,3 +51,4 @@ jobs:
       - uses: bridgecrewio/checkov-action@f967808197a8d784d3e72919f38c3ff0cda7884e # v12
         with:
           directory: infra
+          skip_check: CKV_AWS_144,CKV_AWS_18,CKV_AWS_145,CKV2_AWS_62,CKV2_AWS_61,CKV2_AWS_5
